@@ -6,6 +6,7 @@ use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Http;
 
 class ProductController extends Controller
 {
@@ -35,6 +36,9 @@ class ProductController extends Controller
         } catch (ModelNotFoundException  $th) {
             return response()->json(['message' => 'product not found'], 400);
         }
-        return response()->json(['pay_url' => 'link'], 200);
+
+        // $response = Http::post('url', ['price' => $product->price, 'webhook_url' => 'http://localhost:8000/payment-webhook']);
+        $response = ['pay_url' => 'url', 'order_id' => 1];
+        return response()->json(['pay_url' => $response['pay_url']], 200);
     }
 }
