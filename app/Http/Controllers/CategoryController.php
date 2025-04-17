@@ -14,4 +14,8 @@ class CategoryController extends Controller
 
         return response()->json(['data' => $categories], 200);
     }
+
+    // web.php
+
+
 }

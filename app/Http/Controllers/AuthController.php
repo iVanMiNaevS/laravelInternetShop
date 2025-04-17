@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Validation\ValidationException;
 
@@ -40,5 +41,18 @@ class AuthController extends Controller
         $request->user()->currentAccessToken()->delete();
 
         return response()->json(['message' => 'logout'], 200);
+    }
+    // web.php
+    public function adminLogin(Request $request)
+    {
+        $validData = $request->validate(['email' => 'email|required', "password" => 'required']);
+        if (Auth::attempt($validData)) {
+            $request->session()->regenerate();
+            return redirect()->intended('/admin/category');
+        }
+
+        return back()->withErrors([
+            'email' => 'Неверные данные для входа.',
+        ]);
     }
 }

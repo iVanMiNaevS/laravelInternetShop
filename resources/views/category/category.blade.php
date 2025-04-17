@@ -27,7 +27,7 @@
                         <a href="{{ route('category.show', $category) }}" class="btn btn-info btn-sm" title="Просмотреть">
                             👁️
                         </a>
-                        <a href="{{ route('category.edit', $category) }}" class="btn btn-warning btn-sm" title="Редактировать">
+                        <a href="{{ route('category.update', $category) }}" class="btn btn-warning btn-sm" title="Редактировать">
                             ✏️
                         </a>
                         @if ($category->products_count === 0)

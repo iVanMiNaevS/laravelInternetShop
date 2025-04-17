@@ -5,7 +5,7 @@
 <div class="container d-flex justify-content-center align-items-center vh-100">
     <div class="card shadow p-4" style="width: 100%; max-width: 400px;">
         <h3 class="text-center mb-4">Вход</h3>
-        <form action="auth" method="post">
+        <form action="{{route('admin.store')}}" method="post">
             @csrf
             <div class="mb-3">
                 <label for="email" class="form-label">Email адрес</label>
